@@ -19,6 +19,10 @@ REM =======================================================
 REM cleanup section
 REM =======================================================
 
+DISCONN
+CONN sys/oracle@localhost:1521/xepdb1 as SYSDBA
+SHOW CON_NAME
+
 DROP USER admin_user CASCADE;
 
 REM =======================================================
