@@ -60,15 +60,14 @@ ALTER SESSION SET NLS_TERRITORY=America;
 
 -- @__SUB__CWD__/human_resources/hr_cr
 
-
 CREATE TABLE clientes (
     id_cliente       NUMBER(10) NOT NULL,
     nombres          VARCHAR2(30),
     apellidos        VARCHAR2(30),
-    tel�fono         VARCHAR2(15),
+    telefono         VARCHAR2(15),
     email            VARCHAR2(100),
     direccion        VARCHAR2(100),
-    "FECHA REGISTRO" DATE
+    fecha_registro   DATE
 );
 
 ALTER TABLE clientes ADD CONSTRAINT clientes_pk PRIMARY KEY ( id_cliente );
@@ -89,10 +88,10 @@ CREATE TABLE empleados (
     telefono              VARCHAR2(15),
     cedula                NUMBER(20),
     salario               NUMBER(15, 2),
-    fecha_de_contrataci�n DATE,
+    fecha_de_contratacion DATE,
     email                 VARCHAR2(100),
     gerente_id            NUMBER(10),
-    "PUESTOS_ID-PUESTO"   NUMBER(10) NOT NULL
+    puestos_id_puesto   NUMBER(10) NOT NULL
 );
 
 CREATE UNIQUE INDEX empleados_tel_idx ON
@@ -154,11 +153,11 @@ CREATE TABLE proveedores (
 ALTER TABLE proveedores ADD CONSTRAINT proveedores_pk PRIMARY KEY ( id_proveedor );
 
 CREATE TABLE puestos (
-    "ID-PUESTO"   NUMBER(10) NOT NULL,
+    id_puesto   NUMBER(10) NOT NULL,
     nombre_puesto VARCHAR2(15)
 );
 
-ALTER TABLE puestos ADD CONSTRAINT puestos_pk PRIMARY KEY ( "ID-PUESTO" );
+ALTER TABLE puestos ADD CONSTRAINT puestos_pk PRIMARY KEY ( id_puesto );
 
 ALTER TABLE detalles_de_ordenes
     ADD CONSTRAINT detalles_de_ordenes_ordenes_fk FOREIGN KEY ( id_orden )
@@ -174,8 +173,8 @@ ALTER TABLE empleados
         REFERENCES empleados ( id_empleado );
 
 ALTER TABLE empleados
-    ADD CONSTRAINT empleados_puestos_fk FOREIGN KEY ( "PUESTOS_ID-PUESTO" )
-        REFERENCES puestos ( "ID-PUESTO" );
+    ADD CONSTRAINT empleados_puestos_fk FOREIGN KEY ( puestos_id_puesto )
+        REFERENCES puestos ( id_puesto );
 
 ALTER TABLE materiales
     ADD CONSTRAINT materiales_proveedores_fk FOREIGN KEY ( proveedores_id_proveedor )
@@ -196,8 +195,7 @@ ALTER TABLE producto_material
 
 ALTER TABLE producto_material
     ADD CONSTRAINT producto_material_productos_fk FOREIGN KEY ( productos_id_producto )
-        REFERENCES productos ( id_producto );
--- 
+        REFERENCES productos ( id_producto ); 
 -- populate tables
 --
 
