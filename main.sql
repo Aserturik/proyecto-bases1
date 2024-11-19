@@ -58,8 +58,6 @@ ALTER SESSION SET NLS_TERRITORY=America;
 -- create tables, sequences and constraint
 --
 
--- @__SUB__CWD__/human_resources/hr_cr
-
 CREATE TABLE clientes (
     id_cliente       NUMBER(10) NOT NULL,
     nombres          VARCHAR2(30),
@@ -159,13 +157,14 @@ CREATE TABLE puestos (
 
 ALTER TABLE puestos ADD CONSTRAINT puestos_pk PRIMARY KEY ( id_puesto );
 
+REM =========== LLAVES FORANEAS ==========================================
+
 ALTER TABLE detalles_de_ordenes
     ADD CONSTRAINT detalles_de_ordenes_ordenes_fk FOREIGN KEY ( id_orden )
         REFERENCES ordenes ( id_orden );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
 ALTER TABLE detalles_de_ordenes
-    ADD CONSTRAINT detalles_de_ordenes_producto_material_fk FOREIGN KEY ( id_producto_material )
+    ADD CONSTRAINT deta_orden_producto_material_fk FOREIGN KEY ( id_producto_material )
         REFERENCES producto_material ( id_producto_material );
 
 ALTER TABLE empleados
@@ -188,14 +187,14 @@ ALTER TABLE ordenes
     ADD CONSTRAINT ordenes_empleados_fk FOREIGN KEY ( id_empleado )
         REFERENCES empleados ( id_empleado );
 
---  ERROR: FK name length exceeds maximum allowed length(30) 
 ALTER TABLE producto_material
-    ADD CONSTRAINT producto_material_materiales_fk FOREIGN KEY ( materiales_id_material )
+    ADD CONSTRAINT produc_material_materiales_fk FOREIGN KEY ( materiales_id_material )
         REFERENCES materiales ( id_material );
 
 ALTER TABLE producto_material
     ADD CONSTRAINT producto_material_productos_fk FOREIGN KEY ( productos_id_producto )
-        REFERENCES productos ( id_producto ); 
+        REFERENCES productos ( id_producto );
+
 -- populate tables
 --
 
