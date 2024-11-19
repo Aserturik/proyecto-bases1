@@ -32,7 +32,7 @@ REM =======================================================
 CREATE USER admin_user IDENTIFIED BY &pass;
 
 ALTER USER admin_user DEFAULT TABLESPACE users
-              QUOTA UNLIMITED ON users;
+QUOTA UNLIMITED ON users;
 
 ALTER USER admin_user TEMPORARY TABLESPACE temp;
 
@@ -58,8 +58,22 @@ ALTER SESSION SET NLS_TERRITORY=America;
 -- create tables, sequences and constraint
 --
 
--- @__SUB__CWD__/human_resources/hr_cre
+-- @__SUB__CWD__/human_resources/hr_cr
+CREATE TABLE clientes
+    (   cliente_id      NUMBER(10)
+     ,  names
+        last_names
+phone_number
+email
+direction
+register_date
+);
 
+CREATE TABLE CLIENTES (
+    cliente_id NUMBER(7),
+    nombres VARCHAR2(100),
+
+);
 -- 
 -- populate tables
 --
