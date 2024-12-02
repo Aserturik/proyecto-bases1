@@ -7,7 +7,7 @@ SET TRIMSPOOL ON
 REM ----------------------------------------------------------------------------------------------------
 
 
-REM ---------------------------- CREACIO¿½N DEL USUARIO Y CEO¿½N DE PERMISOS -----------------------------
+REM ---------------------------- CREACION DEL USUARIO Y CEACION DE PERMISOS -----------------------------
 UNDEFINE admin_Inventory
 UNDEFINE pass
 
@@ -22,7 +22,7 @@ PROMPT
 
 SPOOL ./taller.log
 
-REM -------------------------- CONEXIO¿½N A LA BASE DE DATOS COMO ADMINISTRADOR --------------------------
+REM -------------------------- CONEXION A LA BASE DE DATOS COMO ADMINISTRADOR --------------------------
 
 DISCONN
 CONN sys/&password_SYS@localhost:1521/xepdb1 as SYSDBA
@@ -43,11 +43,11 @@ GRANT execute ON sys.dbms_stats TO &user_admin;
 REM ----------------------------------------------------------------------------------------------------
 
 
-REM ---------------------- CONEXIï¿½N A LA BASE DE DATOS CON EL NUEVO USUARIO ----------------------------
+REM ---------------------- CONEXION A LA BASE DE DATOS CON EL NUEVO USUARIO ----------------------------
 
 CONNECT &user_admin/&password@localhost:1521/xepdb1
 --
--- create tables, sequences and constraint
+-- CREACION DE LAS TABLAS, SECUENCIAS Y CONSTRAINTS
 --
 CREATE TABLE base_products (
     b_product_id NUMBER(6) NOT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE product_composition (
     b_product_id    NUMBER(6) NOT NULL
 );
 
----Alter for tables for FK---
+---ALTERACION DE LAS TABLAS CON (FK)
 ALTER TABLE product_composition ADD CONSTRAINT product_composition_pk PRIMARY KEY ( p_comp_id );
 
 CREATE TABLE units_of_measure (
@@ -184,38 +184,38 @@ ALTER TABLE base_products
     ADD CONSTRAINT units_of_measure_fk FOREIGN KEY ( measure_id )
         REFERENCES units_of_measure ( measure_id );
 
--- INSERT FOR EACH TABLE IN SYSTEM ---
+-- CARGA DE DATOS CON INSERCIONES
 
 INSERT INTO units_of_measure (measure_id, measure_name) VALUES (1, 'Centimetros');
 INSERT INTO units_of_measure (measure_id, measure_name) VALUES (2, 'Kilogramos');
-INSERT INTO units_of_measure (measure_id, measure_name) VALUES (3, 'Litros');
+INSERT INTO units_of_measure (measure_id, measure_name) VALUES (3, 'Galones');
 INSERT INTO units_of_measure (measure_id, measure_name) VALUES (4, 'Piezas');
 
 INSERT INTO jobs (job_id, job_title) VALUES (1, 'Gerente');
 INSERT INTO jobs (job_id, job_title) VALUES (2, 'Soldador');
 INSERT INTO jobs (job_id, job_title) VALUES (3, 'Pintor');
-INSERT INTO jobs (job_id, job_title) VALUES (4, 'Asistente');
+INSERT INTO jobs (job_id, job_title) VALUES (4, 'Ayudante');
 
 INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (1, 'Lamina de acero galvanizado', 'Lamina de Acero', 0.90, 2);
+VALUES (1, 'Lamina calibre 14 (gruesa)', 'Lamina cal 14', 14, 1);
+
+INSERT INTO base_products (b_product_id, description, name, gauge, measure_id)
+VALUES (2, 'Portón de una hoja para casa', 'Portón de una hoja para casa', 18, 1);
 
 INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (2, 'Perfil de aluminio para puertas', 'Perfil de Aluminio', 0.50, 2);
+VALUES (3, 'Pintura negra esmalte brillante', 'Esmalte Negro Brillante', NULL, 3);
 
 INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (3, 'Pintura esmaltada para metal', 'Pintura Esmaltada', NULL, 3);
-
-INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (4, 'Tornillos de alta resistencia', 'Tornillos', NULL, 4);
+VALUES (4, 'Clavo caballo color negro, resistente a la corrosión', 'clavo negro caballo', NULL, 4);
 
 INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (1, 'Marco de Puerta de Acero', 'Marco hecho de laminas de acero galvanizado y perfiles de aluminio', 120.00);
+VALUES (1, 'Acero', 'Aleación de hierro y carbono, en la que este entra en una proporción entre el 0,02 y el 2 %, y que, según su tratamiento, adquiere especial elasticidad, dureza o resistencia.', 120.00);
 
 INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (2, 'Porton Pintado', 'Porton con pintura esmaltada y acabados decorativos', 250.00);
+VALUES (2, 'Aluminio', 'Elemento químico metálico, de número atómico 13, de color similar al de la plata, ligero, resistente y dúctil, muy abundante en la corteza terrestre, que tiene diversas aplicaciones industriales.', 250.00);
 
 INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (3, 'Marco de Ventana', 'Marco hecho de perfiles de aluminio y tornillos', 80.00);
+VALUES (3, 'Hierro', 'Elemento químico metálico, de número atómico 26, de color negro lustroso o gris azulado, dúctil, maleable, muy tenaz, abundante en la corteza terrestre, que entra en la composición de sustancias importantes en los seres vivos y es el metal más empleado en la industria.', 80.00);
 
 INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction) 
 VALUES (1, 'Carlos', 'Gomez', '3124567890', 'carlos.gomez@correo.com', SYSDATE, 'Calle 12 #45-78');
@@ -248,13 +248,13 @@ INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, cl
 VALUES (3, SYSDATE, SYSDATE + 10, 'Pendiente', NULL, 3);
 
 INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
-VALUES (1, 200.00, 100.00, 5.00, 50.000, 'Puerta de acero y aluminio', 1, 1);
+VALUES (1, 200.00, 100.00, 0.00, 50.000, 'Lamina de acero calibre 14', 1, 1);
 
 INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
-VALUES (2, 150.00, 80.00, 5.00, 30.000, 'Porton con acabado de pintura', 2, 3);
+VALUES (2, 150.00, 80.00, 5.00, 3.000, 'Porton calibre 18 de aluminio una hoja para casa', 2, 2);
 
 INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
-VALUES (3, 120.00, 60.00, 5.00, 20.000, 'Marco de ventana con tornillos', 3, 2);
+VALUES (3, 0.30, 0.10, 2.00, 20.000, 'tornillos de hierro marca caballo de 2 cemtimetros', 3, 4);
 
 INSERT INTO labor (labor, employee_id, p_comp_id, order_id) 
 VALUES (5.50, 2, 1, 1);
