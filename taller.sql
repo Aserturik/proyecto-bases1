@@ -189,82 +189,82 @@ ALTER TABLE base_products
     ADD CONSTRAINT units_of_measure_fk FOREIGN KEY ( measure_id )
         REFERENCES units_of_measure ( measure_id );
 
-
 -- INSERT FOR EACH TABLE IN SYSTEM ---
-INSERT INTO units_of_measure (measure_id, measure_name) VALUES (1, 'Centimeters');
-INSERT INTO units_of_measure (measure_id, measure_name) VALUES (2, 'Kilograms');
-INSERT INTO units_of_measure (measure_id, measure_name) VALUES (3, 'Liters');
-INSERT INTO units_of_measure (measure_id, measure_name) VALUES (4, 'Pieces');
 
-INSERT INTO jobs (job_id, job_title) VALUES (1, 'Manager');
-INSERT INTO jobs (job_id, job_title) VALUES (2, 'Welder');
-INSERT INTO jobs (job_id, job_title) VALUES (3, 'Painter');
-INSERT INTO jobs (job_id, job_title) VALUES (4, 'Assistant');
+INSERT INTO units_of_measure (measure_id, measure_name) VALUES (1, 'Centímetros');
+INSERT INTO units_of_measure (measure_id, measure_name) VALUES (2, 'Kilogramos');
+INSERT INTO units_of_measure (measure_id, measure_name) VALUES (3, 'Litros');
+INSERT INTO units_of_measure (measure_id, measure_name) VALUES (4, 'Piezas');
 
-INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (1, 'Galvanized steel sheet', 'Steel Sheet', 0.90, 2);
+INSERT INTO jobs (job_id, job_title) VALUES (1, 'Gerente');
+INSERT INTO jobs (job_id, job_title) VALUES (2, 'Soldador');
+INSERT INTO jobs (job_id, job_title) VALUES (3, 'Pintor');
+INSERT INTO jobs (job_id, job_title) VALUES (4, 'Asistente');
 
 INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (2, 'Aluminum profile for doors', 'Aluminum Profile', 0.50, 2);
+VALUES (1, 'Lámina de acero galvanizado', 'Lámina de Acero', 0.90, 2);
 
 INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (3, 'Enameled paint for metal', 'Enameled Paint', NULL, 3);
+VALUES (2, 'Perfil de aluminio para puertas', 'Perfil de Aluminio', 0.50, 2);
 
 INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (4, 'High-strength screws', 'Screws', NULL, 4);
+VALUES (3, 'Pintura esmalte para metal', 'Pintura Esmalte', NULL, 3);
+
+INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
+VALUES (4, 'Tornillos de alta resistencia', 'Tornillos', NULL, 4);
 
 
 INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (1, 'Steel Door Frame', 'Frame made of galvanized steel sheets and aluminum profiles', 120.00);
+VALUES (1, 'Marco de Puerta de Acero', 'Marco hecho de láminas de acero galvanizado y perfiles de aluminio', 120.00);
 
 INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (2, 'Painted Gate', 'Gate with enamel paint and decorative finishes', 250.00);
+VALUES (2, 'Portón Pintado', 'Portón con pintura esmalte y acabados decorativos', 250.00);
 
 INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (3, 'Window Frame', 'Frame made of aluminum profiles and screws', 80.00);
+VALUES (3, 'Marco de Ventana', 'Marco hecho de perfiles de aluminio y tornillos', 80.00);
 
 
 INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction) 
-VALUES (1, 'Carlos', 'Gomez', '3124567890', 'carlos.gomez@correo.com', SYSDATE, 'Calle 12 #45-78');
+VALUES (1, 'Carlos', 'Gómez', '3124567890', 'carlos.gomez@correo.com', SYSDATE, 'Calle 12 #45-78');
 
 INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction) 
-VALUES (2, 'Lucia', 'Martinez', '3019876543', 'lucia.martinez@correo.com', SYSDATE, 'Carrera 8 #20-14');
+VALUES (2, 'Lucía', 'Martínez', '3019876543', 'lucia.martinez@correo.com', SYSDATE, 'Carrera 8 #20-14');
 
 INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction) 
-VALUES (3, 'Andres', 'Rojas', '3105671234', 'andres.rojas@correo.com', SYSDATE, 'Diagonal 6 #30-25');
+VALUES (3, 'Andrés', 'Rojas', '3105671234', 'andres.rojas@correo.com', SYSDATE, 'Diagonal 6 #30-25');
 
 
 INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id) 
-VALUES (1, 'Ana', 'Lopez', '3151234567', 1234567890, 5000.00, SYSDATE, 'ana.lopez@correo.com', NULL, 1);
+VALUES (1, 'Ana', 'López', '3151234567', 1234567890, 5000.00, SYSDATE, 'ana.lopez@correo.com', NULL, 1);
 
 INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id) 
-VALUES (2, 'Juan', 'Perez', '3112345678', 9876543210, 3000.00, SYSDATE, 'juan.perez@correo.com', 1, 2);
+VALUES (2, 'Juan', 'Pérez', '3112345678', 9876543210, 3000.00, SYSDATE, 'juan.perez@correo.com', 1, 2);
 
 INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id) 
-VALUES (3, 'Maria', 'Hernandez', '3179876543', 1234509876, 2800.00, SYSDATE, 'maria.hernandez@correo.com', 1, 3);
+VALUES (3, 'María', 'Hernández', '3179876543', 1234509876, 2800.00, SYSDATE, 'maria.hernandez@correo.com', 1, 3);
 
 INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id) 
-VALUES (4, 'Luis', 'Garcia', '3185671234', 4567891230, 2000.00, SYSDATE, 'luis.garcia@correo.com', 1, 4);
+VALUES (4, 'Luis', 'García', '3185671234', 4567891230, 2000.00, SYSDATE, 'luis.garcia@correo.com', 1, 4);
 
 
 INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client) 
-VALUES (1, SYSDATE, SYSDATE + 7, 'Pending', 370.00, 1);
+VALUES (1, SYSDATE, SYSDATE + 7, 'Pendiente', 370.00, 1);
 
 INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client) 
-VALUES (2, SYSDATE, SYSDATE + 5, 'Completed', 250.00, 2);
+VALUES (2, SYSDATE, SYSDATE + 5, 'Completado', 250.00, 2);
 
 INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client) 
-VALUES (3, SYSDATE, SYSDATE + 10, 'Pending', 120.00, 3);
+VALUES (3, SYSDATE, SYSDATE + 10, 'Pendiente', 120.00, 3);
 
 
 INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
-VALUES (1, 200.00, 100.00, 5.00, 50.000, 'Steel and aluminum door', 1, 1);
+VALUES (1, 200.00, 100.00, 5.00, 50.000, 'Puerta de acero y aluminio', 1, 1);
 
 INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
-VALUES (2, 150.00, 80.00, 5.00, 30.000, 'Gate with paint finish', 2, 3);
+VALUES (2, 150.00, 80.00, 5.00, 30.000, 'Portón con acabado de pintura', 2, 3);
 
 INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
-VALUES (3, 120.00, 60.00, 5.00, 20.000, 'Window frame with screws', 3, 2);
+VALUES (3, 120.00, 60.00, 5.00, 20.000, 'Marco de ventana con tornillos', 3, 2);
 
 
 INSERT INTO labor (labor, employee_id, p_comp_id, order_id) 
@@ -275,5 +275,6 @@ VALUES (6.00, 3, 2, 2);
 
 INSERT INTO labor (labor, employee_id, p_comp_id, order_id) 
 VALUES (4.50, 4, 3, 3);
+
 COMMIT;
 spool off
