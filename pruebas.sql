@@ -10,8 +10,8 @@ JOIN base_products ON product_composition.b_product_id = base_products.b_product
 /
 SELECT
     base_products.name AS "Producto Base",
-    compositions.composition_name AS "Composición",
-    compositions.price AS "Precio Composición"
+    compositions.composition_name AS "Composicion",
+    compositions.price AS "Precio Composicion"
 FROM
     product_composition
 JOIN compositions ON product_composition.composition_id = compositions.composition_id
