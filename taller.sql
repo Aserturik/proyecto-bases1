@@ -196,74 +196,74 @@ INSERT INTO jobs (job_id, job_title) VALUES (2, 'Soldador');
 INSERT INTO jobs (job_id, job_title) VALUES (3, 'Pintor');
 INSERT INTO jobs (job_id, job_title) VALUES (4, 'Ayudante');
 
-INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
+INSERT INTO base_products (b_product_id, description, name, gauge, measure_id)
 VALUES (1, 'Lamina calibre 14 (gruesa)', 'Lamina cal 14', 14, 1);
 
 INSERT INTO base_products (b_product_id, description, name, gauge, measure_id)
-VALUES (2, 'Portón de una hoja para casa', 'Portón de una hoja para casa', 18, 1);
+VALUES (2, 'Porton de una hoja para casa', 'Porton de una hoja para casa', 18, 1);
 
-INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
+INSERT INTO base_products (b_product_id, description, name, gauge, measure_id)
 VALUES (3, 'Pintura negra esmalte brillante', 'Esmalte Negro Brillante', NULL, 3);
 
-INSERT INTO base_products (b_product_id, description, name, gauge, measure_id) 
-VALUES (4, 'Clavo caballo color negro, resistente a la corrosión', 'clavo negro caballo', NULL, 4);
+INSERT INTO base_products (b_product_id, description, name, gauge, measure_id)
+VALUES (4, 'Clavo caballo color negro, resistente a la corrosion', 'clavo negro caballo', NULL, 4);
 
-INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (1, 'Acero', 'Aleación de hierro y carbono, en la que este entra en una proporción entre el 0,02 y el 2 %, y que, según su tratamiento, adquiere especial elasticidad, dureza o resistencia.', 120.00);
+INSERT INTO compositions (composition_id, composition_name, composition_description, price)
+VALUES (1, 'Acero', 'Aleacion de hierro y carbono, en la que este entra en una proporcion entre el 0,02 y el 2 por ciento, y que, segun su tratamiento, adquiereesas propiedades: elasticidad, dureeza o resistencia.', 120.00);
 
-INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (2, 'Aluminio', 'Elemento químico metálico, de número atómico 13, de color similar al de la plata, ligero, resistente y dúctil, muy abundante en la corteza terrestre, que tiene diversas aplicaciones industriales.', 250.00);
+INSERT INTO compositions (composition_id, composition_name, composition_description, price)
+VALUES (2, 'Aluminio', 'Elemento quimico metalico, de numero atomico 13, de color similar al de la plata, ligero, resistente y ductil, muy abundante en la corteza terrestre, que tiene diversas aplicaciones industriales.', 250.00);
 
-INSERT INTO compositions (composition_id, composition_name, composition_description, price) 
-VALUES (3, 'Hierro', 'Elemento químico metálico, de número atómico 26, de color negro lustroso o gris azulado, dúctil, maleable, muy tenaz, abundante en la corteza terrestre, que entra en la composición de sustancias importantes en los seres vivos y es el metal más empleado en la industria.', 80.00);
+INSERT INTO compositions (composition_id, composition_name, composition_description, price)
+VALUES (3, 'Hierro', 'Elemento quimico metalico, de numero atomico 26, de color negro lustroso o gris azulado, ductil, maleable, muy tenaz, abundante en la corteza terrestre.', 80.00);
 
-INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction) 
+INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction)
 VALUES (1, 'Carlos', 'Gomez', '3124567890', 'carlos.gomez@correo.com', SYSDATE, 'Calle 12 #45-78');
 
-INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction) 
+INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction)
 VALUES (2, 'Lucia', 'Martinez', '3019876543', 'lucia.martinez@correo.com', SYSDATE, 'Carrera 8 #20-14');
 
-INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction) 
+INSERT INTO clients (id_client, names, last_names, phone_number, email, registration_date, direction)
 VALUES (3, 'Andres', 'Rojas', '3105671234', 'andres.rojas@correo.com', SYSDATE, 'Diagonal 6 #30-25');
 
-INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id) 
+INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id)
 VALUES (1, 'Ana', 'Lopez', '3151234567', 1234567890, 5000.00, SYSDATE, 'ana.lopez@correo.com', NULL, 1);
 
-INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id) 
+INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id)
 VALUES (2, 'Juan', 'Perez', '3112345678', 9876543210, 3000.00, SYSDATE, 'juan.perez@correo.com', 1, 2);
 
-INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id) 
+INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id)
 VALUES (3, 'Maria', 'Hernandez', '3179876543', 1234509876, 2800.00, SYSDATE, 'maria.hernandez@correo.com', 1, 3);
 
-INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id) 
+INSERT INTO employees (employee_id, names, last_names, phone_number, cart, salary, hire_date, email, manager_id, job_id)
 VALUES (4, 'Luis', 'Garcia', '3185671234', 4567891230, 2000.00, SYSDATE, 'luis.garcia@correo.com', 1, 4);
 
-INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client) 
+INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client)
 VALUES (1, SYSDATE, SYSDATE + 7, 'Pendiente', NULL, 1);
 
-INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client) 
+INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client)
 VALUES (2, SYSDATE, SYSDATE + 5, 'Completado', NULL, 2);
 
-INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client) 
+INSERT INTO orders (order_id, order_date, delivery_date, status, total_price, clients_id_client)
 VALUES (3, SYSDATE, SYSDATE + 10, 'Pendiente', NULL, 3);
 
-INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
-VALUES (1, 200.00, 100.00, 0.00, 50.000, 'Lamina de acero calibre 14', 1, 1);
+INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id)
+VALUES (1, 200.00, 0.00, 100.00, 50.000, 'Lamina de acero calibre 14', 1, 1);
 
-INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
+INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id)
 VALUES (2, 150.00, 80.00, 5.00, 3.000, 'Porton calibre 18 de aluminio una hoja para casa', 2, 2);
 
-INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id) 
-VALUES (3, 0.30, 0.10, 2.00, 20.000, 'tornillos de hierro marca caballo de 2 cemtimetros', 3, 4);
+INSERT INTO product_composition (p_comp_id, length, width, height, stock, product_details, composition_id, b_product_id)
+VALUES (3, 0.30, 0.10, 2.00, 20.000, 'clavo de hierro marca caballo de 2 cemtimetros', 3, 4);
 
-INSERT INTO labor (labor, employee_id, p_comp_id, order_id) 
-VALUES (5.50, 2, 1, 1);
+INSERT INTO labor (labor, employee_id, p_comp_id, order_id)
+VALUES (50000.00, 2, 1, 1);
 
-INSERT INTO labor (labor, employee_id, p_comp_id, order_id) 
-VALUES (6.00, 3, 2, 2);
+INSERT INTO labor (labor, employee_id, p_comp_id, order_id)
+VALUES (60000.00, 3, 2, 2);
 
-INSERT INTO labor (labor, employee_id, p_comp_id, order_id) 
-VALUES (4.50, 4, 3, 3);
+INSERT INTO labor (labor, employee_id, p_comp_id, order_id)
+VALUES (20000.50, 4, 3, 3);
 
 COMMIT;
 spool off
